@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Search{% endblock title %}
+<html>
+<body>
+ 
+    {% block content %}
+    <div class="container-fluid mt-5 mb-5">
+        <div class="card">
+            <div class="card-header font-weight-bold"><h1>Search results</h1></div>
+            <div class="card-body">
+                {% for blogs in blogs_list %}
+                    <div>
+                        <h3><a href="{{ blogs.get_absolute_url }}">{{ blogs.title }}</a></h3>
+                        <p>Author: {{ blogs.author }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="card-footer"><a class="btn bg-dark text-white btn-sm" href="{% url 'home' %}">Back</a></div>
+
+        </div> 
+    </div>
+
+    {% endblock content %}
+        
+</body>
+</html>

@@ -1,0 +1,48 @@
+
+body {
+    margin: 5em;
+    padding: 2em;
+    margin-bottom: 4em;
+    font-family: ‘Merriweather’, serif;
+    background: url("../images/newtravel.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+
+}
+.container-fluid{
+    width: 100%;
+
+}
+
+.footer {
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 0.6em;
+ }
+
+.testclass{
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
+
+.img-max{
+    max-width: 500px;
+    width:100%;
+}
+
+/* css for carousel */
+.carousel-inner img {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+    opacity: 0.5;
+}
+.carousel-inner img:hover {
+    opacity: 1.0;
+
+}

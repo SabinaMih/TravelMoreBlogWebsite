@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <div class="blogs-entry mt-5 mb-5">
+    <div class="card">
+      <div class="card-header">
+        <div class="float-left">
+          <span class="font-weight-bold"><h1>{{ object.title }}</h1></span> &middot;
+          <span class="text-muted">by {{ object.author }} | {{ object.date }}</span>
+        </div>
+        <div class="float-right">
+          {% if user.is_authenticated and blogs.author == user %}
+            <a class="btn bg-dark text-white btn-sm" href="{% url 'blogs_edit' blogs.pk %}">Edit</a>
+            <a class="btn bg-dark text-white btn-sm" href="{% url 'blogs_delete' blogs.pk %}">Delete</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="card-body">
+        {% if blogs.cover %}
+            <div class="img-max d-block">
+              <img class="img-fluid" src="{{blogs.cover.url}}" alt="{{ blogs.title}}">
+            </div>
+          {% endif %}
+          <div class="card-text my-5">
+            <p>{{ object.body }}</p>
+          </div>
+      </div>
+        </br>
+        <div class="card-footer"><h1>Comments</h1>
+          {% for comment in blogs.comments.all %}
+            <div class="card m-2">
+            <div class="card-header">
+            <span class="font-weight-bold">{{ comment.author }}</span>
+            <span class="text-muted"> | {{ comment.created_date }}</span></div>
+            <div class="card-body">{{ comment.text }}</div>
+            </div>
+          {% empty %}
+            <p>No comments</p>
+          {% endfor %}
+        <a class="btn bg-dark text-white btn-sm" href="{% url 'add_comment_to_post' blogs.pk %}">Add comment</a>
+        <a class="btn bg-dark text-white btn-sm" href="{% url 'blogs_list' %}">All Blogs</a>
+      </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock content %}

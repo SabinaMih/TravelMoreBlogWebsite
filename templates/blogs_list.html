@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Blogs{% endblock title %}
+{% block content %}
+
+<div class="container-fluid mb-5">
+    <!-- search bar -->
+    <div class="float-right d-block mt-5">
+      <form class="form-inline" action="{% url 'search_results' %}" method="get">
+        <p class="font-weight-bold text-white text-center">Looking for a particular blog  <input name="q" class="form-control" type="text" placeholder="Search" aria-label="Search"><button class="btn bg-dark text-white btn-sm" type="submit">Go</button> </p>
+      </form>
+    </div>
+  </br></br>
+ 
+ 
+  <div class="font-weight-bold text-white mt-5"><h1>Read our members blogs and find new places to visit!</h1></div>
+  {% if user.is_authenticated %}
+      <div class="font-weight-bold text-white">
+        <div class="myBlogs"><h1>My Blogs <a class="btn bg-dark text-white btn-sm" href="{% url 'blogs_new' %}">Create new Blog</a></h1></div>
+     
+      <div class="card">
+        <!-- displaying user blogs first -->
+        {% for blogs in object_list %}
+          {% if blogs.author == user %} 
+              <div class="card mt-3">
+                <div class="card-header">
+                  <div class="float-left">
+                    <span class="font-weight-bold text-dark">{{ blogs.title }}</span> &middot;
+                    <span class="text-muted">by {{ blogs.author }} | {{ blogs.date }}</span>
+                  </div>
+                  <div class="float-right">
+                      <a class="btn bg-dark text-white btn-sm" href="{% url 'blogs_edit' blogs.pk %}">Edit</a>
+                      <a class="btn bg-dark text-white btn-sm" href="{% url 'blogs_delete' blogs.pk %}">Delete</a>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <a class="btn bg-dark text-white btn-sm" href="{% url 'blogs_detail' blogs.pk %}">Read</a>
+                  <a class="btn bg-dark text-white btn-sm" href="{% url 'blogs_detail' pk=blogs.pk %}">Comments: {{ blogs.comments.count }}</a>
+                </div>
+              </div>
+          {% endif %}
+        {% endfor %}
+        
+      </div>
+    </div>
+  {% endif %}
+  
+  
+  <div class="font-weight-bold text-white mt-3"><h1>All Blogs</h1>
+    {% for blogs in object_list %}
+      <!-- displaying other users blogs -->
+      {% if not blogs.author == user %}
+          <div class="card mt-3">
+            <div class="card-header">
+              <div class="float-left">
+                <span class="font-weight-bold text-dark">{{ blogs.title }}</span> &middot;
+                <span class="text-muted">by {{ blogs.author }} | {{ blogs.date }}</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a class="btn bg-dark text-white btn-sm" href="{% url 'blogs_detail' blogs.pk %}">Read</a>
+              <a class="btn bg-dark text-white btn-sm" href="{% url 'blogs_detail' pk=blogs.pk %}">Comments: {{ blogs.comments.count }}</a>
+            </div>
+          </div>
+      {% endif%}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

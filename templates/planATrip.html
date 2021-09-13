@@ -1,0 +1,68 @@
+<html>
+<head>
+    {% extends 'base.html' %}
+    {% load static %}
+    <title>{% block title %}Plan a trip{% endblock title %}</title>
+
+</head>
+<body>
+{% block content %}
+    <div class="container-fluid mb-5">
+        <div class="font-weight-bold text-white mt-5 mb-5"><h1>Plan your next trip</h1></div>
+        <div class="row mb-3">
+            <div class="col-sm">
+                <div class="card p-3 h-100">
+                    <label for="destinationName"><h4 class="font-weight-bold">Destination:</h4></label>
+                    <p><input type="text" id="destinationName" name="destinationName" placeholder="Enter destination"></p>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card p-3 h-100">
+                    <label for="budget"><h4 class="font-weight-bold">What's your budget:</h4></label>
+                    <p><input type="number" id="budget" name="budget" placeholder="Enter your budget" min="1"></p>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card p-3 h-100">
+                    <h4 class="font-weight-bold text-center">Total cost:</h4>
+                </br>
+                    <h4 class="font-weight-bold text-center" id="result">0</h4>
+                </div>
+            </div>
+        </div>
+            <div class="card p-2">
+                <div class="card-body font-weight-bold">
+                    <label for="transport">1. Flights and transport costs:</label>
+                    <p><input type="number" id="transport" name="transport" placeholder="Enter transport cost" min="1"></p>
+
+                    <label for="accomodation">2. Accomodation:</label>
+                    <p><input type="number" id="accomodation" name="accomodation" placeholder="Enter accomodation cost"min="1"></p>
+
+                    <label for="food">3. Food:</label>
+                    <p><input type="number" id="food" name="food" placeholder="Enter food cost" min="1"></p>
+
+                    <label for="other">4. Other:</label>
+                    <p><input type="number" id="other" name="other" placeholder="Enter other cost" min="0"></p>
+                </div>
+                <div class="card-footer p-2">
+                    <a class ="btn bg-dark text-white btn-sm m-1" onClick="calculateBudget('transport','accomodation','food','other'); compareBudgetWithCost('budget', 'destinationName'); $('#target').toggle()">Result</a>
+                    
+                    <div class="card p-2 m-2" id="target" style="display: none">
+                        <h4 class="font-weight-bold">Result:</h4>
+                        <p id="finalResult"></p>
+                    </div>
+                    <a class="btn bg-dark text-white btn-sm" href="{% url 'planATrip' %}">Try again</a>
+                    
+                </div>
+        </div>
+</div>
+    <!-- JavaScript-->
+    {% block javascript %}
+    <script type="text/javascript" src='{% static "js/base.js" %}'></script>
+    {% endblock javascript %}
+
+    {% endblock content %}
+</body>
+</html>
+
+

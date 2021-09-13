@@ -1,0 +1,25 @@
+<!-- templates/tipsForTravel.html-->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="font-weight-bold text-white mt-5 mb-3"><h1>Tips for travel</h1></div>
+<div class="card p-2 mb-5">
+    <div class="card-header bg-dark text-white font-weight-bold">Tips For Making Travel Easy and Fun</div>
+    <div class="card-body">
+        <img class="card-img-top pb-4" src="{% static 'images/planatrip.jpg'%}" alt="Card image" style="width:400px">
+        <h3>1. Observe daily life around you</h3>
+        <p>When you visit a new place is important to take some time to watch the locals and the habits they have. The number of countries you visited doesn’t matter is more important to take your time to understand their culture.</p>
+        <h3>2. Take lots of pictures</h3>
+        <p>You may only see these places and meet these people once in your lifetime. Remember them forever with plenty of photos! It does not cost you anything to take pictures, they don’t take up space in your luggage and you can easily share them with others.</p>
+        <h3>3. Leave your comfort zone</h3>
+        <p>Challenge yourself to try thing you don’t usually do. There are so many options for new things when you travel. You can try new outdoor activities like hiking or different foods.</p>
+        <h3>4. Be flexible and don’t over plan</h3>
+        <p>Planning is good but you don’t have to stress to much about all the details. Since you are visiting a new place you won’t be able to fallow a strict plan. Consider being flexible and open minded.</p>
+        <h3>5. Pack less stuff in your backpack</h3>
+        <p>Try to keep your backpack only for essential. Remember you can buy most thing at your destination. </p>
+    </div>
+    <div class="card-footer"><h4>Find more travel tips in our blogs!</h4></div>
+</div>
+{% endblock content %}

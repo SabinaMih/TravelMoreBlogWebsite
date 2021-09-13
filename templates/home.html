@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html>
+<head>
+    <title>{% block title %}Home{% endblock title %}</title>
+</head>
+
+<body>
+    {% block content %}
+    <!-- Carousel Created using w3school tutorials-->
+    <div id="number" class="carousel slide mt-5" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#number" data-slide-to="0" class="active"></li>
+          <li data-target="#number" data-slide-to="1"></li>
+          <li data-target="#number" data-slide-to="2"></li>
+          <li data-target="#number" data-slide-to="3"></li>
+        </ul>
+        
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <!-- img ref https://cameronscookware.com/venice-italy-wallpaper/-->
+            <img src="{% static 'images/pict1.jpg'%}" alt="travelMore" width="1100" height="600">
+            <div class="carousel-caption">
+        
+              <h1>" A journey of a thousand miles begins with a single step "</h1>
+              <p>-Lao tzu</p>
+            </div>
+            </div>
+          <div class="carousel-item">
+            <!-- img ref https://www.playasmexico.com.mx/como-viajar-en-avion-por-primera/-->
+            <img src="{% static 'images/pic2.jpg' %}" alt="tipsForTravel" width="1100" height="600">
+            <div class="carousel-caption">
+                <h1>"The world is a book</h1><h1>and those who do not travel read only one page"</h1>
+                <p>-Saint Augustine</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/pic3.jpg' %}" alt="joinUs" width="1100" height="600">
+            <div class="carousel-caption">
+              <h1>Great things never came from comfort zones.</h1>
+            </br>
+              <a class="btn bg-dark text-white btn-lg" href="{% url 'signup' %}" role="button">Join us</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <!-- img ref https://wallpaperaccess.com/travel-hd-->
+            <img src="{% static 'images/img4.jpg' %}" alt="joinUs" width="1100" height="600">
+            <div class="carousel-caption">
+                  <!-- Search bar -->
+                <div class="fluid-container d-flex mt-5 justify-content-center align-self-center mx-auto">
+                  <form class="form-inline" action="{% url 'search_results' %}" method="get">
+                    <p class="display-4 font-weight-bold text-white text-center">Find your next journey</br><input  name="q" class="form-control" type="text" placeholder="Search blog" aria-label="Search"><button class="btn bg-dark text-white btn-sm" type="submit">Go</button></p>
+                  </form>
+                </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Left and right buttons -->
+        <a class="carousel-control-prev" href="#number" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#number" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+      
+    <!-- main container -->
+
+    <div class="carousel slide mt-5" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <!-- img ref https://unsplash.com/photos/W_-6PWGbYaU-->
+          <img src="{% static 'images/tft.jpg'%}" alt="travelMore" width="1100" height="600">
+          <div class="carousel-caption p-5">
+            <h1>Are you ready for your next trip?</h1>
+          </br>
+          <h1>Have a look at our best tips for an unforgettable adventure!</h1>
+        </br>
+            <p><a class="btn bg-dark text-white btn-lg" href="{% url 'tipsFortravel' %}" role="button">Tips for travel</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel slide mt-5 mb-5" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <!-- img ref https://wallpapersprinted.com/wallpaper/2/ponte_sant_angelo_rome_italy_travel.html-->
+          <img src="{% static 'images/rm.jpg'%}" alt="travelMore" width="1100" height="600">
+          <div class="carousel-caption p-5">
+            <h1>Looking for inspiration?</h1>
+            <h1>We created a top with the most visited places.</h1>
+          </br>
+            <p><a class="btn bg-dark text-white btn-lg" href="{% url 'topDestinations' %}" role="button">Top Destinations</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- JavaScript-->
+    {% block javascript %}
+    <script type="text/javascript" src='{% static "js/base.js" %}'></script>
+    {% endblock javascript %}
+    {% endblock content %}
+</body>
+
+</html>
